@@ -1,0 +1,37 @@
+- General
+	- Makefile
+	- Parametrer Escape
+	- Parametrer croix rouge
+
+- Menu
+	- Start bouton :
+		- Parametrer le clic souris
+		- Parametrer la touche entree
+
+- Algo
+	- Dessiner overlay / convertir en .xpm
+	- Dessiner des blocs / ""
+	- Apparition du bloc
+	- Touche mvt
+	- Colision avec la delimitation
+	- Arret de controle du bloc
+	- Passage au prochain
+	- Gravite
+	- Suppression de la/les lignes remplies
+	- Repositionnement de la grille du jeu
+
+------------------------------------------------------------------------
+
+Norme du projet :
+	- Norme de 42 sauf :
+		- fonction 25 lignes
+		- 5 fonctions par fichiers
+		- return paratheses
+		- boucles for interdites
+		- 42 Header
+	- Prefix des fonctions :
+		- init : (*var) -> void
+		- set : (*var, valeurs) -> void
+		- get : (vars) -> ...
+		- check : (vars) -> void + exit if failed
+		- do : (vars) -> void	
