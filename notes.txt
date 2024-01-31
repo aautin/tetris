@@ -5,10 +5,15 @@
 
 - Menu
 	- Start bouton : (finished)
-		- Parametrer le clic souris (aautin)
-		- Parametrer la touche entree (aautin)
+		- Parametrer le clic souris (finished)
+		- Parametrer la touche entree (finished)
 
-- Algo
+- Switch between Menu and Game
+	- load the imgs just one time in the init_tetris (aautin) 
+	- create a switch-to-menu-function (aautin)
+	- create a switch-to-game-function (aautin)
+
+- Game
 	- Dessiner overlay / convertir en .xpm (K-Pascal)
 	- Dessiner des blocs / "" (K-Pascal)
 	- Apparition du bloc (K-Pascal)
