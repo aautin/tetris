@@ -14,10 +14,10 @@
 	- create a switch-to-game-function (aautin)
 
 - Game
-	- Dessiner overlay / convertir en .xpm (K-Pascal)
-	- Dessiner des blocs / "" (K-Pascal)
-	- Apparition du bloc (K-Pascal)
-	- Touche mvt (K-Pascal)
+	- Dessiner overlay / convertir en .xpm (finished)
+	- Dessiner des blocs / "" (finished)
+	- Apparition du bloc (finished)
+	- Touche mvt (finished)
 	- Colision avec la delimitation
 	- Arret de controle du bloc
 	- Passage au prochain

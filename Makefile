@@ -18,7 +18,8 @@ DEFAULT :=\e(B\e[m
 FILES		:=	main.c			\
 				event.c			\
 				close.c			\
-				menu.c
+				menu.c			\
+				game.c
 
 SRC_PATH	:=	src
 SRC			:=	$(addprefix $(SRC_PATH)/,$(FILES))
