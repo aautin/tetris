@@ -19,10 +19,10 @@
 	- Dessiner des blocs / "" (finished)
 	- Apparition du bloc (finished)
 	- Touche mvt (finished)
-	- Colision avec la delimitation (aautin)
-	- Arret de controle du bloc (aautin)
+	- Colision avec la delimitation (finished)
+	- Arret de controle du bloc (finished)
 	- Passage au prochain
-	- Gravite
+	- Gravite (finished)
 	- Suppression de la/les lignes remplies
 	- Repositionnement de la grille du jeu
 

@@ -41,7 +41,7 @@ typedef struct s_tetris
 
 typedef enum s_direction
 {
-	NONE = 0,
+	D_NONE = 0,
 	D_LEFT = (1 << 0),
 	D_DOWN = (1 << 1),
 	D_RIGHT = (1 << 2),

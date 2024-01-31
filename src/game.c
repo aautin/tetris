@@ -20,7 +20,7 @@ int time_loop(t_tetris *tetris)
 		time_spent = time_current - tetris->time_start;
 		if (time_spent >= 1)
 		{
-			if (tetris->current_piece.y + 32 < tetris->win.height - 16)
+			if (!detect_collision_down(tetris))
 				move_tetromino(tetris, D_DOWN);
 			tetris->time_start = time(NULL);
 		}
@@ -36,6 +36,6 @@ int	switch_to_game(t_tetris *tetris)
 							tetris->game_img.ptr, 14, 78);
 	tetris->time_start = time(NULL) + 2;
 	set_tetromino(tetris);
-	move_tetromino(tetris, NONE);
+	move_tetromino(tetris, D_NONE);
 	return 0;
 }
