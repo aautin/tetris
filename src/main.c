@@ -52,7 +52,9 @@ static void	init_imgs(t_tetris *tetris)
 
 static void	check_imgs(t_tetris *tetris)
 {
-	if (tetris->game_img.ptr == NULL || tetris->start_img.ptr == NULL || tetris->block_img.ptr == NULL)
+	if (tetris->game_img.ptr == NULL
+	|| tetris->start_img.ptr == NULL
+	|| tetris->block_img.ptr == NULL)
 	{
 		ft_putendl_fd("An issue occured during an img conversion from xpm to image object", STDERR_FILENO);
 		close_tetris(tetris);

@@ -16,10 +16,11 @@ int	is_on_start_button(int x, int y, t_tetris *tetris)
 	bot_edge = tetris->win.height / 2 + tetris->start_img.height / 2;
 	left_edge = tetris->win.width / 2 - tetris->start_img.width / 2;
 	right_edge = tetris->win.width / 2 + tetris->start_img.width / 2;
-	if (left_edge <= x && x <= right_edge && bot_edge >= y && y >= top_edge)
-		return 1;
-	else
-		return 0;
+
+	return left_edge <= x
+			&& x <= right_edge
+			&& bot_edge >= y
+			&& y >= top_edge;
 }
 
 int	switch_to_menu(t_tetris *tetris)

@@ -10,21 +10,29 @@
 #include "close.h"
 #include "game.h"
 #include "menu.h"
+#include "tetromino.h"
 #include "typedef.h"
 
 int	key_pressed(int keycode, t_tetris *tetris)
 {
-	if (keycode == XK_Escape)
+	if (tetris->state == MENU)
 	{
-		if (tetris->state == MENU)
+		if (keycode == XK_Escape)
 			close_tetris(tetris);
-		else if (tetris->state == GAME)
-			switch_to_menu(tetris);
+		else if (keycode == XK_Return)
+			switch_to_game(tetris);
 	}
-	else if (keycode == XK_Return && tetris->state == MENU)
-		switch_to_game(tetris);
-	else
-		ft_putnbr_fd(keycode, 0);
+	else if (tetris->state == GAME)
+	{
+		if (keycode == XK_Escape)
+			switch_to_menu(tetris);
+		else if (keycode == XK_Right)
+			move_tetromino(tetris, D_RIGHT);
+		else if (keycode == XK_Down)
+			move_tetromino(tetris, D_DOWN);
+		else if (keycode == XK_Left)
+			move_tetromino(tetris, D_LEFT);
+	}
 	return 0;
 }
 
@@ -32,8 +40,6 @@ int	button_pressed(int keycode, int x, int y, t_tetris *tetris)
 {
 	if (keycode == 1 && tetris->state == MENU && is_on_start_button(x, y, tetris))
 		switch_to_game(tetris);
-	else
-		ft_putnbr_fd(keycode, 0);
 	return 0;
 }
 
