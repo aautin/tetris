@@ -7,25 +7,25 @@
 #include "event.h"
 #include "typedef.h"
 
-static void	init_game(t_game *game)
+static void	init_tetris(t_tetris *tetris)
 {
-	game->mlx = mlx_init();
-	if (game->mlx == NULL)
+	tetris->mlx = mlx_init();
+	if (tetris->mlx == NULL)
 		return ;
-	game->window = mlx_new_window(game->mlx, 11 * 32, 21 * 32, "TETRIS");
+	tetris->window = mlx_new_window(tetris->mlx, 11 * 32, 21 * 32, "TETRIS");
 }
 
-static void	check_game(t_game *game)
+static void	check_tetris(t_tetris *tetris)
 {
-	if (game->mlx == NULL)
+	if (tetris->mlx == NULL)
 	{
 		ft_putendl_fd("mlx_init()", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
-	if (game->window == NULL)
+	if (tetris->window == NULL)
 	{
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
+		mlx_destroy_display(tetris->mlx);
+		free(tetris->mlx);
 		ft_putendl_fd("mlx_new_window()", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
@@ -33,13 +33,13 @@ static void	check_game(t_game *game)
 
 int	main()
 {
-	t_game	game;
+	t_tetris	tetris;
 
-	init_game(&game);
-	check_game(&game);
+	init_tetris(&tetris);
+	check_tetris(&tetris);
 
-	init_menu_events(&game);
+	init_menu_events(&tetris);
 
-	mlx_loop(game.mlx);
+	mlx_loop(tetris.mlx);
 	return 0;
 }

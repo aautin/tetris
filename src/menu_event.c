@@ -9,23 +9,23 @@
 
 #include "typedef.h"
 
-int	close_program(t_game *game)
+int	close_program(t_tetris *tetris)
 {
-	mlx_destroy_window(game->mlx, game->window);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
+	mlx_destroy_window(tetris->mlx, tetris->window);
+	mlx_destroy_display(tetris->mlx);
+	free(tetris->mlx);
 	exit(EXIT_SUCCESS);
 }
 
-int	key_pressed(int keycode, t_game *game)
+int	key_pressed(int keycode, t_tetris *tetris)
 {
 	if (keycode == XK_Escape)
-		close_program(game);
+		close_program(tetris);
 	return 0;
 }
 
-void	init_menu_events(t_game *game)
+void	init_menu_events(t_tetris *tetris)
 {
-	mlx_hook(game->window, DestroyNotify, NoEventMask, &close_program, game);
-	mlx_hook(game->window, KeyPress, KeyPressMask, &key_pressed, game);
+	mlx_hook(tetris->window, DestroyNotify, NoEventMask, &close_program, tetris);
+	mlx_hook(tetris->window, KeyPress, KeyPressMask, &key_pressed, tetris);
 }
