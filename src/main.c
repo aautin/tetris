@@ -12,7 +12,7 @@ static void	init_game(t_game *game)
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 		return ;
-	game->window = mlx_new_window(game->mlx, 500, 500, "TETRIS");
+	game->window = mlx_new_window(game->mlx, 11 * 32, 21 * 32, "TETRIS");
 }
 
 static void	check_game(t_game *game)
