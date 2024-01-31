@@ -6,6 +6,7 @@
 #include "mlx/mlx.h"
 
 #include "close.h"
+#include "collision.h"
 #include "tetromino.h"
 #include "typedef.h"
 
@@ -13,6 +14,7 @@ int time_loop(t_tetris *tetris)
 {
 	time_t	time_current;
 	time_t	time_spent;
+	t_list	*new_node;
 
 	if (tetris->state == GAME)
 	{
@@ -22,6 +24,18 @@ int time_loop(t_tetris *tetris)
 		{
 			if (!detect_collision_down(tetris))
 				move_tetromino(tetris, D_DOWN);
+			else
+			{
+				new_node = ft_lstnew(tetris->current_piece);
+				if (new_node == NULL)
+				{
+					close_game(tetris);
+					close_tetris(tetris);
+				}
+				ft_lstadd_back(&tetris->pieces, new_node);
+				set_tetromino(tetris);
+				move_tetromino(tetris, D_NONE);
+			}
 			tetris->time_start = time(NULL);
 		}
 	}
@@ -30,6 +44,8 @@ int time_loop(t_tetris *tetris)
 
 int	switch_to_game(t_tetris *tetris)
 {
+	tetris->current_piece = NULL;
+	tetris->pieces = NULL;
 	mlx_clear_window(tetris->mlx, tetris->win.ptr);
 	tetris->state = GAME;
 	mlx_put_image_to_window(tetris->mlx, tetris->win.ptr,

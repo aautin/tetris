@@ -20,6 +20,7 @@ FILES		:=	main.c			\
 				event.c			\
 				game.c			\
 				menu.c			\
+				collision.c		\
 				tetromino.c
 
 SRC_PATH	:=	src

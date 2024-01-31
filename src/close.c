@@ -1,8 +1,15 @@
 #include <stdlib.h>
 
 #include "mlx/mlx.h"
+#include "libft/libft.h"
 
 #include "typedef.h"
+
+void close_game(t_tetris *tetris)
+{
+	free(tetris->current_piece);
+	ft_lstclear(&tetris->pieces, &free);
+}
 
 int	close_tetris(t_tetris *tetris)
 {

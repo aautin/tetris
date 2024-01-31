@@ -6,6 +6,8 @@
 
 # include <time.h>
 
+# include "libft/libft.h"
+
 typedef struct s_win
 {
 	void	*ptr;
@@ -36,7 +38,8 @@ typedef struct s_tetris
 	t_img		start_img;
 	t_img		game_img;
 	t_img		block_img;
-	t_tetromino	current_piece;
+	t_list		*pieces;
+	t_tetromino	*current_piece;
 }	t_tetris;
 
 typedef enum s_direction

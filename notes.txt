@@ -2,7 +2,7 @@
 	- Makefile (finished)
 	- Parametrer Escape (finished)
 	- Parametrer croix rouge (finished)
-	- Documenter fonctions (K-Pascal)
+	- Documenter fonctions (finished)
 
 - Menu
 	- Start bouton : (finished)
@@ -20,9 +20,11 @@
 	- Apparition du bloc (finished)
 	- Touche mvt (finished)
 	- Colision avec la delimitation (finished)
+	- Colision avec les autres tetromino (aautin)
 	- Arret de controle du bloc (finished)
-	- Passage au prochain
+	- Passage au prochain (finished)
 	- Gravite (finished)
+	- Selection random de tetromino (K-Pascal)
 	- Suppression de la/les lignes remplies
 	- Repositionnement de la grille du jeu
 

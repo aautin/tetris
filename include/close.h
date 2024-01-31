@@ -9,4 +9,9 @@
  */
 int		close_tetris(t_tetris *tetris);
 
+/*
+ * To complete...
+*/
+void close_game(t_tetris *tetris);
+
 #endif

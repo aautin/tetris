@@ -25,7 +25,10 @@ int	key_pressed(int keycode, t_tetris *tetris)
 	else if (tetris->state == GAME)
 	{
 		if (keycode == XK_Escape)
+		{
+			close_game(tetris);
 			switch_to_menu(tetris);
+		}
 		else if (keycode == XK_Right)
 			move_tetromino(tetris, D_RIGHT);
 		else if (keycode == XK_Down)
