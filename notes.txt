@@ -1,7 +1,7 @@
 - General
-	- Makefile (K-Pascal)
-	- Parametrer Escape
-	- Parametrer croix rouge
+	- Makefile (finished)
+	- Parametrer Escape (finished)
+	- Parametrer croix rouge (finished)
 
 - Menu
 	- Start bouton :

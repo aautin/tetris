@@ -15,7 +15,9 @@ GOTO_B  :=\e[1A\e[K
  
 DEFAULT :=\e(B\e[m
 
-FILES		:=
+FILES		:=	main.c			\
+				game_event.c	\
+				menu_event.c
 
 SRC_PATH	:=	src
 SRC			:=	$(addprefix $(SRC_PATH)/,$(FILES))
@@ -46,13 +48,13 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(MLX_PATH)/lib$(MLX).a $(FT_PATH)/lib$(FT).a
 	@echo "$(ORANGE)Linking into $(ITALIC)$(BOLD)$@$(DEFAULT)"
-	@$(CC) $(CFLAGS) $(CINC) $(GDB) -o $@ $^ $(CLIB) && echo "$(GOTO_B)$(GREEN)Sucessfully linked into $(ITALIC)$(BOLD)$@$(DEFAULT)"
+	@$(CC) $(CFLAGS) $(CINC) $(GDB) -o $@ $^ $(CLIB) && echo "$(GOTO_B)$(GREEN)Successfully linked into $(ITALIC)$(BOLD)$@$(DEFAULT)"
 
 $(MLX_PATH)/lib$(MLX).a:
-	make --silent -C $(MLX_PATH)
+	@make --silent -C $(MLX_PATH)
 
 $(FT_PATH)/lib$(FT).a:
-	make --silent -C $(FT_PATH)
+	@make --silent -C $(FT_PATH)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
 	@echo "$(ORANGE)Compiling the file $(BOLD)$<$(DEFAULT)"
@@ -71,8 +73,8 @@ clean:
 
 fclean: clean
 	@(rm $(NAME) 2> /dev/null && echo "$(RED)Removed the executable $(NAME)$(DEFAULT)") ||:
-	make --silent fclean -C $(FT_PATH)
-	make --silent clean -C $(MLX_PATH)
+	@make --silent fclean -C $(FT_PATH)
+	@make --silent clean -C $(MLX_PATH)
 
-re: fclean
+re: fclean all
 
