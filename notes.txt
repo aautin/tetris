@@ -1,5 +1,5 @@
 - General
-	- Makefile
+	- Makefile (K-Pascal)
 	- Parametrer Escape
 	- Parametrer croix rouge
 
@@ -34,4 +34,3 @@ Norme du projet :
 		- set : (*var, valeurs) -> void
 		- get : (vars) -> ...
 		- check : (vars) -> void + exit if failed
-		- do : (vars) -> void	
