@@ -14,7 +14,6 @@ int time_loop(t_tetris *tetris)
 {
 	time_t	time_current;
 	time_t	time_spent;
-	t_list	*new_node;
 
 	if (tetris->state == GAME)
 	{
@@ -25,17 +24,7 @@ int time_loop(t_tetris *tetris)
 			if (!detect_collision_down(tetris))
 				move_tetromino(tetris, D_DOWN);
 			else
-			{
-				new_node = ft_lstnew(tetris->current_piece);
-				if (new_node == NULL)
-				{
-					close_game(tetris);
-					close_tetris(tetris);
-				}
-				ft_lstadd_back(&tetris->pieces, new_node);
-				set_tetromino(tetris);
-				move_tetromino(tetris, D_NONE);
-			}
+				new_tetromino(tetris);
 			tetris->time_start = time(NULL);
 		}
 	}

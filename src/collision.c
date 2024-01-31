@@ -64,3 +64,125 @@ char detect_collision(t_tetris *tetris, e_direction direction)
 		return detect_collision_left(tetris);
 	return 1;
 }
+
+static char	detect_tetromino_left(t_tetris *tetris)
+{
+	t_list		*node;
+	t_tetromino	*tetromino;
+
+	node = tetris->pieces;
+	while (node)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				tetromino = (t_tetromino *)(node->content);
+				if (tetromino->mat_pos[i][j] == 1)
+				{
+					for (int k = 0; k < 4; k++)
+					{
+						for (int l = 0; l < 4; l++)
+						{
+							if (tetris->current_piece->mat_pos[k][l] == 1)
+							{
+								if (tetromino->y + i * 32 == tetris->current_piece->y + k * 32)
+								{
+									if (tetromino->x + j * 32 == tetris->current_piece->x + l * 32 - 32)
+										return 1;
+								}  
+							}
+						}
+					}
+				}
+			}
+		}
+		node = node->next;
+	}
+	return 0;
+}
+
+static char	detect_tetromino_right(t_tetris *tetris)
+{
+	t_list		*node;
+	t_tetromino	*tetromino;
+
+	node = tetris->pieces;
+	while (node)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				tetromino = (t_tetromino *)(node->content);
+				if (tetromino->mat_pos[i][j] == 1)
+				{
+					for (int k = 0; k < 4; k++)
+					{
+						for (int l = 0; l < 4; l++)
+						{
+							if (tetris->current_piece->mat_pos[k][l] == 1)
+							{
+								if (tetromino->y + i * 32 == tetris->current_piece->y + k * 32)
+								{
+									if (tetromino->x + j * 32 == tetris->current_piece->x + l * 32 + 32)
+										return 1;
+								}  
+							}
+						}
+					}
+				}
+			}
+		}
+		node = node->next;
+	}
+	return 0;
+}
+
+char	detect_tetromino_down(t_tetris *tetris)
+{
+	t_list		*node;
+	t_tetromino	*tetromino;
+
+	node = tetris->pieces;
+	while (node)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				tetromino = (t_tetromino *)(node->content);
+				if (tetromino->mat_pos[i][j] == 1)
+				{
+					for (int k = 0; k < 4; k++)
+					{
+						for (int l = 0; l < 4; l++)
+						{
+							if (tetris->current_piece->mat_pos[k][l] == 1)
+							{
+								if (tetromino->x + j * 32 == tetris->current_piece->x + l * 32)
+								{
+									if (tetromino->y + i * 32 == tetris->current_piece->y + k * 32 + 32)
+										return 1;
+								}  
+							}
+						}
+					}
+				}
+			}
+		}
+		node = node->next;
+	}
+	return 0;
+}
+
+char	detect_tetromino(t_tetris *tetris, e_direction direction)
+{
+	if (direction & D_RIGHT)
+		return detect_tetromino_right(tetris);
+	if (direction & D_DOWN)
+		return detect_tetromino_down(tetris);
+	if (direction & D_LEFT)
+		return detect_tetromino_left(tetris);
+	return 1;
+}

@@ -8,19 +8,12 @@
 
 # include "libft/libft.h"
 
-typedef struct s_win
+typedef struct s_obj
 {
 	void	*ptr;
 	int		width;
 	int		height;
-}	t_win;
-
-typedef struct s_img
-{
-	void	*ptr;
-	int		width;
-	int		height;
-}	t_img;
+}	t_obj;
 
 typedef struct s_tetromino
 {
@@ -31,15 +24,15 @@ typedef struct s_tetromino
 
 typedef struct s_tetris
 {
-	void	*mlx;
-	t_win	win;
-	char	state;
-	time_t	time_start;
-	t_img		start_img;
-	t_img		game_img;
-	t_img		block_img;
+	void		*mlx;
+	t_obj		win;
+	t_obj		start_img;
+	t_obj		game_img;
+	t_obj		block_img;
 	t_list		*pieces;
 	t_tetromino	*current_piece;
+	time_t		time_start;
+	char		state;
 }	t_tetris;
 
 typedef enum s_direction

@@ -10,6 +10,22 @@
 #include "tetromino.h"
 #include "typedef.h"
 
+
+void new_tetromino(t_tetris *tetris)
+{
+	t_list	*new_node;
+
+	new_node = ft_lstnew(tetris->current_piece);
+	if (new_node == NULL)
+	{
+		close_game(tetris);
+		close_tetris(tetris);
+	}
+	ft_lstadd_back(&tetris->pieces, new_node);
+	set_tetromino(tetris);
+	move_tetromino(tetris, D_NONE);
+}
+
 static void	erase_sprite(t_tetris *tetris, int x, int y)
 {
 	for (int i = 0; i < 32; i++)
@@ -55,25 +71,22 @@ static void	draw_tetromino(t_tetris *tetris)
 
 void	move_tetromino(t_tetris *tetris, e_direction direction)
 {
-	t_list	*new_node;
-
 	if (direction != D_NONE)
 	{
 		if (detect_collision_down(tetris))
 		{
-			new_node = ft_lstnew(tetris->current_piece);
-			if (new_node == NULL)
-			{
-				close_game(tetris);
-				close_tetris(tetris);
-			}
-			ft_lstadd_back(&tetris->pieces, new_node);
-			set_tetromino(tetris);
-			move_tetromino(tetris, D_NONE);
+			new_tetromino(tetris);
 			return ;
 		}
 		if (detect_collision(tetris, direction))
 			return ;
+		if (detect_tetromino_down(tetris))
+		{
+			new_tetromino(tetris);
+			return ;
+		}
+		if (detect_tetromino(tetris, direction))
+			direction = D_NONE;
 	}
 	remove_tetromino(tetris);
 	if (direction & D_DOWN)
@@ -98,34 +111,4 @@ void	set_tetromino(t_tetris *tetris)
 	tetris->current_piece->y = 64 + 16;
 
 	set_random_tetromino(tetris->current_piece->mat_pos);
-
-//	tetris->current_piece->mat_pos[0][0] = 1;
-//	tetris->current_piece->mat_pos[0][1] = 0;
-//	tetris->current_piece->mat_pos[0][2] = 0;
-//	tetris->current_piece->mat_pos[0][3] = 0;
-//
-//	tetris->current_piece->mat_pos[1][0] = 1;
-//	tetris->current_piece->mat_pos[1][1] = 0;
-//	tetris->current_piece->mat_pos[1][2] = 0;
-//	tetris->current_piece->mat_pos[1][3] = 0;
-//
-//	tetris->current_piece->mat_pos[2][0] = 1;
-//	tetris->current_piece->mat_pos[2][1] = 0;
-//	tetris->current_piece->mat_pos[2][2] = 0;
-//	tetris->current_piece->mat_pos[2][3] = 0;
-//
-//	tetris->current_piece->mat_pos[3][0] = 1;
-//	tetris->current_piece->mat_pos[3][1] = 0;
-//	tetris->current_piece->mat_pos[3][2] = 0;
-//	tetris->current_piece->mat_pos[3][3] = 0;
-//	for (int i = 0; i < 4; i++)
-//	{
-//		for (int j = 0; j < 4; j++)
-//		{
-//			if (i == 0 && j == 0)
-//				tetris->current_piece->mat_pos[i][j] = 1;
-//			else
-//				tetris->current_piece->mat_pos[i][j] = 0;
-//		}
-//	}
 }
