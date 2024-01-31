@@ -6,6 +6,7 @@
 
 #include "close.h"
 #include "collision.h"
+#include "generate_tetromino.h"
 #include "tetromino.h"
 #include "typedef.h"
 
@@ -96,25 +97,27 @@ void	set_tetromino(t_tetris *tetris)
 	tetris->current_piece->x = 16 + (4 * 32);
 	tetris->current_piece->y = 64 + 16;
 
-	tetris->current_piece->mat_pos[0][0] = 1;
-	tetris->current_piece->mat_pos[0][1] = 0;
-	tetris->current_piece->mat_pos[0][2] = 0;
-	tetris->current_piece->mat_pos[0][3] = 0;
+	set_random_tetromino(tetris->current_piece->mat_pos);
 
-	tetris->current_piece->mat_pos[1][0] = 1;
-	tetris->current_piece->mat_pos[1][1] = 0;
-	tetris->current_piece->mat_pos[1][2] = 0;
-	tetris->current_piece->mat_pos[1][3] = 0;
-
-	tetris->current_piece->mat_pos[2][0] = 1;
-	tetris->current_piece->mat_pos[2][1] = 0;
-	tetris->current_piece->mat_pos[2][2] = 0;
-	tetris->current_piece->mat_pos[2][3] = 0;
-
-	tetris->current_piece->mat_pos[3][0] = 1;
-	tetris->current_piece->mat_pos[3][1] = 0;
-	tetris->current_piece->mat_pos[3][2] = 0;
-	tetris->current_piece->mat_pos[3][3] = 0;
+//	tetris->current_piece->mat_pos[0][0] = 1;
+//	tetris->current_piece->mat_pos[0][1] = 0;
+//	tetris->current_piece->mat_pos[0][2] = 0;
+//	tetris->current_piece->mat_pos[0][3] = 0;
+//
+//	tetris->current_piece->mat_pos[1][0] = 1;
+//	tetris->current_piece->mat_pos[1][1] = 0;
+//	tetris->current_piece->mat_pos[1][2] = 0;
+//	tetris->current_piece->mat_pos[1][3] = 0;
+//
+//	tetris->current_piece->mat_pos[2][0] = 1;
+//	tetris->current_piece->mat_pos[2][1] = 0;
+//	tetris->current_piece->mat_pos[2][2] = 0;
+//	tetris->current_piece->mat_pos[2][3] = 0;
+//
+//	tetris->current_piece->mat_pos[3][0] = 1;
+//	tetris->current_piece->mat_pos[3][1] = 0;
+//	tetris->current_piece->mat_pos[3][2] = 0;
+//	tetris->current_piece->mat_pos[3][3] = 0;
 //	for (int i = 0; i < 4; i++)
 //	{
 //		for (int j = 0; j < 4; j++)

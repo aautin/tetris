@@ -21,7 +21,8 @@ FILES		:=	main.c			\
 				game.c			\
 				menu.c			\
 				collision.c		\
-				tetromino.c
+				tetromino.c		\
+				generate_tetromino.c
 
 SRC_PATH	:=	src
 SRC			:=	$(addprefix $(SRC_PATH)/,$(FILES))
