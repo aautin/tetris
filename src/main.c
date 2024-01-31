@@ -12,6 +12,8 @@
 
 static void	init_tetris(t_tetris *tetris);
 static void	check_tetris(t_tetris *tetris);
+static void	init_imgs(t_tetris *tetris);
+static void	check_imgs(t_tetris *tetris);
 
 int	main()
 {
@@ -19,10 +21,11 @@ int	main()
 
 	init_tetris(&tetris);
 	check_tetris(&tetris);
-
-	init_closing_events(&tetris);
-	launch_menu(&tetris);
-
+	
+	init_imgs(&tetris);
+	check_imgs(&tetris);
+	
+	switch_to_menu(&tetris);
 //	init_game_overlay(&tetris);
 //	check_game_overlay(&tetris);
 //
@@ -44,9 +47,35 @@ int	main()
 //				mlx_put_image_to_window(tetris.mlx, tetris.win.ptr, tetris.block.ptr, piece.x + j * 32, piece.y + i * 32);
 //		}
 //	}
-
 	mlx_loop(tetris.mlx);
 	return 0;
+}
+
+static void	init_imgs(t_tetris *tetris)
+{
+	tetris->block_img.ptr = mlx_xpm_file_to_image(tetris->mlx,
+												"sprites/block.xpm",
+												&tetris->block_img.width,
+												&tetris->block_img.height);
+
+	tetris->game_img.ptr = mlx_xpm_file_to_image(tetris->mlx,
+												"sprites/game.xpm",
+												&tetris->game_img.width,
+												&tetris->game_img.height);
+	
+	tetris->start_img.ptr = mlx_xpm_file_to_image(tetris->mlx,
+												"sprites/start.xpm",
+												&tetris->start_img.width,
+												&tetris->start_img.height);
+}
+
+static void	check_imgs(t_tetris *tetris)
+{
+	if (tetris->game_img.ptr == NULL || tetris->start_img.ptr == NULL || tetris->block_img.ptr == NULL)
+	{
+		ft_putendl_fd("An issue occured during an img conversion from xpm to image object", STDERR_FILENO);
+		close_tetris(tetris);
+	}
 }
 
 static void	init_tetris(t_tetris *tetris)

@@ -30,11 +30,11 @@ typedef struct s_tetris
 {
 	void	*mlx;
 	t_win	win;
-	t_img	start_img;
 	char	state;
+	t_img		start_img;
 	t_img		game_img;
+	t_img		block_img;
 	t_tetromino	current_piece;
-	t_img		block;
 }	t_tetris;
 
 typedef enum s_direction

@@ -2,6 +2,7 @@
 	- Makefile (finished)
 	- Parametrer Escape (finished)
 	- Parametrer croix rouge (finished)
+	- Documenter fonctions (K-Pascal)
 
 - Menu
 	- Start bouton : (finished)
@@ -9,17 +10,17 @@
 		- Parametrer la touche entree (finished)
 
 - Switch between Menu and Game
-	- load the imgs just one time in the init_tetris (aautin) 
-	- create a switch-to-menu-function (aautin)
-	- create a switch-to-game-function (aautin)
+	- load the imgs just one time in the init_tetris (finished) 
+	- create a switch-to-menu-function (finished)
+	- create a switch-to-game-function (finished)
 
 - Game
 	- Dessiner overlay / convertir en .xpm (finished)
 	- Dessiner des blocs / "" (finished)
 	- Apparition du bloc (finished)
 	- Touche mvt (finished)
-	- Colision avec la delimitation
-	- Arret de controle du bloc
+	- Colision avec la delimitation (aautin)
+	- Arret de controle du bloc (aautin)
 	- Passage au prochain
 	- Gravite
 	- Suppression de la/les lignes remplies

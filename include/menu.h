@@ -3,7 +3,7 @@
 
 #include "typedef.h"
 
-int		launch_menu(t_tetris *tetris);
+int		switch_to_menu(t_tetris *tetris);
 
 int		is_on_start_button(int x, int y, t_tetris *tetris);
 

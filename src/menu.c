@@ -22,15 +22,10 @@ int	is_on_start_button(int x, int y, t_tetris *tetris)
 		return 0;
 }
 
-int	launch_menu(t_tetris *tetris)
+int	switch_to_menu(t_tetris *tetris)
 {
+	mlx_clear_window(tetris->mlx, tetris->win.ptr);
 	tetris->state = MENU;
-	tetris->start_img.ptr = mlx_xpm_file_to_image(tetris->mlx,
-												"sprites/start_button.xpm",
-												&tetris->start_img.width,
-												&tetris->start_img.height);
-	if (!tetris->start_img.ptr)
-		close_tetris(tetris);
 	mlx_put_image_to_window(tetris->mlx, tetris->win.ptr, tetris->start_img.ptr,
 							tetris->win.width / 2 - tetris->start_img.width / 2,
 							tetris->win.height / 2 - tetris->start_img.height / 2);
