@@ -4,6 +4,7 @@
 #include "typedef.h"
 
 // void	move_tetronimo(t_tetris *tetris, t_tetromino *piece, e_direction direction);
+int time_loop(t_tetris *tetris);
 
 /* @brief Switch in game mode, reseting the scene
  * @param tetris

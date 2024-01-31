@@ -4,13 +4,14 @@
 # define MENU 0
 # define GAME 1
 
+# include <time.h>
+
 typedef struct s_win
 {
 	void	*ptr;
 	int		width;
 	int		height;
 }	t_win;
-
 
 typedef struct s_img
 {
@@ -31,6 +32,7 @@ typedef struct s_tetris
 	void	*mlx;
 	t_win	win;
 	char	state;
+	time_t	time_start;
 	t_img		start_img;
 	t_img		game_img;
 	t_img		block_img;

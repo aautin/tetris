@@ -16,10 +16,11 @@ GOTO_B  :=\e[1A\e[K
 DEFAULT :=\e(B\e[m
 
 FILES		:=	main.c			\
-				event.c			\
 				close.c			\
+				event.c			\
+				game.c			\
 				menu.c			\
-				game.c
+				tetromino.c
 
 SRC_PATH	:=	src
 SRC			:=	$(addprefix $(SRC_PATH)/,$(FILES))

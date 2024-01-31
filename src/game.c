@@ -1,53 +1,41 @@
 #include <stddef.h>
+#include <time.h>
 #include <unistd.h>
 
 #include "libft/libft.h"
 #include "mlx/mlx.h"
 
 #include "close.h"
+#include "tetromino.h"
 #include "typedef.h"
 
-#define GAME_OVERLAY "sprites/game.xpm"
+int time_loop(t_tetris *tetris)
+{
+	time_t	time_current;
+	time_t	time_spent;
 
-// void	move_tetronimo(t_tetris *tetris, t_tetromino *piece, e_direction direction)
-// {
-// 	for (int i = 0; i < 4; i++)
-// 	{
-// 		for (int j = 0; j < 4; j++)
-// 		{
-// 			if (piece->mat_pos[i][j] != 0)
-// 			{
-// 				for (int k = 0; k < 32; k++)
-// 				{
-// 					for (int l = 0; l < 32; l++)
-// 					{
-// 						mlx_pixel_put(tetris->mlx, tetris->win.ptr, piece->x + j * 32 + l, piece->y + i * 32 + k, 0x00000000);
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// 	if (direction & D_DOWN)
-// 		piece->y += 32;
-// 	if (direction & D_RIGHT)
-// 		piece->x += 32;
-// 	if (direction & D_LEFT)
-// 		piece->x -= 32;
-// 	for (int i = 0; i < 4; i++)
-// 	{
-// 		for (int j = 0; j < 4; j++)
-// 		{
-// 			if (piece->mat_pos[i][j] != 0)
-// 				mlx_put_image_to_window(tetris->mlx, tetris->win.ptr, tetris->block.ptr, piece->x + j * 32, piece->y + i * 32);
-// 		}
-// 	}
-// }
+	if (tetris->state == GAME)
+	{
+		time_current = time(NULL);
+		time_spent = time_current - tetris->time_start;
+		if (time_spent >= 1)
+		{
+			if (tetris->current_piece.y + 32 < tetris->win.height - 16)
+				move_tetromino(tetris, D_DOWN);
+			tetris->time_start = time(NULL);
+		}
+	}
+	return 0;
+}
 
 int	switch_to_game(t_tetris *tetris)
 {
 	mlx_clear_window(tetris->mlx, tetris->win.ptr);
 	tetris->state = GAME;
 	mlx_put_image_to_window(tetris->mlx, tetris->win.ptr,
-							tetris->game_img.ptr, 16, 80);
+							tetris->game_img.ptr, 14, 78);
+	tetris->time_start = time(NULL) + 2;
+	set_tetromino(tetris);
+	move_tetromino(tetris, NONE);
 	return 0;
 }

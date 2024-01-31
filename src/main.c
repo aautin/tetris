@@ -26,27 +26,8 @@ int	main()
 	check_imgs(&tetris);
 	
 	switch_to_menu(&tetris);
-//	init_game_overlay(&tetris);
-//	check_game_overlay(&tetris);
-//
-//	mlx_put_image_to_window(tetris.mlx, tetris.win.ptr, tetris.game_img.ptr, 16, 80);
-//
-//	tetris.block.ptr = mlx_xpm_file_to_image(tetris.mlx, "sprites/block.xpm", &tetris.block.width, &tetris.block.height);
-//
-//	t_tetromino piece = {16, 80, 
-//						{{1, 1, 0, 0},
-//						{1, 1, 0, 0},
-//						{0, 0, 0, 0},
-//						{0, 0, 0, 0}}};
-//	tetris.current_piece = piece;
-//	for (int i = 0; i < 4; i++)
-//	{
-//		for (int j = 0; j < 4; j++)
-//		{
-//			if (piece.mat_pos[i][j] != 0)
-//				mlx_put_image_to_window(tetris.mlx, tetris.win.ptr, tetris.block.ptr, piece.x + j * 32, piece.y + i * 32);
-//		}
-//	}
+
+	mlx_loop_hook(tetris.mlx, &time_loop, &tetris);
 	mlx_loop(tetris.mlx);
 	return 0;
 }

@@ -15,7 +15,12 @@
 int	key_pressed(int keycode, t_tetris *tetris)
 {
 	if (keycode == XK_Escape)
-		close_tetris(tetris);
+	{
+		if (tetris->state == MENU)
+			close_tetris(tetris);
+		else if (tetris->state == GAME)
+			switch_to_menu(tetris);
+	}
 	else if (keycode == XK_Return && tetris->state == MENU)
 		switch_to_game(tetris);
 	else
