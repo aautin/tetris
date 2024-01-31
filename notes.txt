@@ -4,7 +4,7 @@
 	- Parametrer croix rouge (finished)
 
 - Menu
-	- Start bouton : (aautin)
+	- Start bouton : (finished)
 		- Parametrer le clic souris (aautin)
 		- Parametrer la touche entree (aautin)
 

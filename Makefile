@@ -16,8 +16,9 @@ GOTO_B  :=\e[1A\e[K
 DEFAULT :=\e(B\e[m
 
 FILES		:=	main.c			\
-				game_event.c	\
-				menu_event.c
+				event.c			\
+				close.c			\
+				menu.c
 
 SRC_PATH	:=	src
 SRC			:=	$(addprefix $(SRC_PATH)/,$(FILES))
@@ -43,7 +44,7 @@ export GDB
 
 NAME		:= tetris
 
-.PHONY: all
+.PHONY: all clean fclean
 all: $(NAME)
 
 $(NAME): $(OBJ) $(MLX_PATH)/lib$(MLX).a $(FT_PATH)/lib$(FT).a
